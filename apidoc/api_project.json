@@ -1,0 +1,16 @@
+{
+  "name": "Blog Appliaction",
+  "version": "1.0.0",
+  "description": "Documentation for the blog application",
+  "title": "Blog APIs",
+  "url": "http://localhost:3000",
+  "sampleUrl": false,
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
+  "generator": {
+    "name": "apidoc",
+    "time": "2020-05-20T20:25:31.982Z",
+    "url": "http://apidocjs.com",
+    "version": "0.22.1"
+  }
+}
