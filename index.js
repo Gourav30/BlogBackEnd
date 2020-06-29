@@ -12,7 +12,9 @@ const helmet = require('helmet')
 
 // declaring an applcation instance
 const app = express()
+const cors = require('cors')
 
+app.use(cors());
 
 //middlewares
 app.use(bodyParser.json())
@@ -22,6 +24,9 @@ app.use(cookieParser())
 app.use(globalErrorMiddleware.globalErrorhandler)
 app.use(routeLoggerMiddlewares.logIp)
 app.use(helmet())
+
+
+
 
 // Bootstrap the Models
 let modelsPath = './models'
@@ -57,12 +62,14 @@ app.use(globalErrorMiddleware.globalNotFoundHandler)
 
 app.listen(appConfig.port, () => {
 
-    console.log(`Example app listening at http://localhost:${appConfig.port}`)
+    //console.log(`Example app listening at http://localhost:${appConfig.port}`)
+    console.log(`Example app listening at http://api.gourav.tech`)
     let db = mongoose.connect(appConfig.db.uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
     })
+    console.log(`MongoDB connected on ${appConfig.db.uri}`)
 })
 
 

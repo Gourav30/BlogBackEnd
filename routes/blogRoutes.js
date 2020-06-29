@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const router = express.Router()
 const blogController = require('../controllers/blogControllers')
 const appConfig = require('../config/appConfig')
@@ -7,7 +8,11 @@ const auth = require("../middlewares/auth")
 
 let setRouter = (app) => {
 
-    let baseUrl = appConfig.apiVersion + '/blogs';
+	let baseUrl = appConfig.apiVersion + '/blogs';
+
+	app.use(cors())
+
+	//let baseUrl = 'http://api.gourav.tech/api/v1/blogs/';
 
     //app.get('/hello-world', blogController.helloWorldFn);
     // app.get('/test/route/:firstName/:lastName/:email', blogController.testRoute);
@@ -15,7 +20,7 @@ let setRouter = (app) => {
     // app.get('/test/body', blogController.testBody);
 
 
-    app.get(baseUrl+'/all',auth.isAuthenticated,blogController.getAllBlogs)
+    app.get(baseUrl+'/all',cors(),auth.isAuthenticated,blogController.getAllBlogs)
 
 	/**
 	 * @api {get} /api/v1/blogs/all Get all blogs
